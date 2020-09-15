@@ -1,12 +1,11 @@
 module.exports = {
-  title: "AH.dev",
+  title: "{AH}",
   description: "web back garden",
   theme: "@vuepress/blog",
   themeConfig: {
     nav: [
       { text: "Home", link: "/" },
       { text: "Blog", link: "/blog/" },
-      { text: "Tag", link: "/tag/" },
     ],
     directories: [
       {
@@ -23,7 +22,7 @@ module.exports = {
       {
         id: "tag",
         keys: ["tag", "tags"],
-        path: "/tag/",
+        path: "/blog/tag/",
         layout: "Tag",
         frontmatter: { title: "Tag" },
         itemlayout: "Tag",
