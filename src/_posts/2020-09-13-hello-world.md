@@ -12,7 +12,7 @@ tag:
 
 some additional blog text
 
-```js
+```javascript
 function myFunction(){
   var hello = "hello"
   const world = "world"
