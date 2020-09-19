@@ -2,6 +2,7 @@
 title: Intro to VuePress blog theme and plugin
 tag:
   - vue
+author: Adam Harpur
 ---
 
 # Vue
