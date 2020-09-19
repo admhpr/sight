@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "web back garden",
   "scripts": {
-    "dev": "vuepress dev src",
-    "build": "vuepress build src"
+    "dev": "npx vuepress dev src",
+    "build": "npx vuepress build src"
   },
   "author": "Adam Harpur",
   "license": "MIT",
   "devDependencies": {
-    "@vuepress/theme-blog": "^2.3.2"
+    "@vuepress/theme-blog": "^2.3.2",
+    "vuepress": "^1.5.4"
   },
   "dependencies": {}
 }

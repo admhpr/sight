@@ -18,6 +18,15 @@ module.exports = {
           perPagePosts: 2,
         },
       },
+      {
+        id: "archive",
+        dirname: "_archived",
+        path: "/archive/",
+        itemPermalink: "/:year/:month/:day/:slug",
+        pagination: {
+          perPagePosts: 2,
+        },
+      },
     ],
     frontmatters: [
       {
