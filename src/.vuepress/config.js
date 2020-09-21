@@ -1,7 +1,6 @@
 module.exports = {
   title: "{AH}",
   description: "web back garden",
-  theme: "@vuepress/blog",
   themeConfig: {
     nav: [
       { text: "Home", link: "/" },

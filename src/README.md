@@ -1,6 +1,6 @@
 ---
 home: true
-heroText: Hero Title
+heroText: ~ HOME ~
 tagline: Hero subtitle
 actionText: Get Started →
 actionLink: /guide/
@@ -14,4 +14,3 @@ features:
 footer: Copyright ©
 ---
 
-~ HOME ~
