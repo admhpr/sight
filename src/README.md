@@ -1,5 +1,5 @@
 ---
-home: true
+layout: HomeLayout
 heroText: ~ HOME ~
 tagline: Hero subtitle
 actionText: Get Started →

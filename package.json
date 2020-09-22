@@ -12,5 +12,8 @@
     "@vuepress/theme-blog": "^2.3.2",
     "vuepress": "^1.5.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "autoprefixer": "^10.0.0",
+    "tailwindcss": "^1.8.10"
+  }
 }
