@@ -8,12 +8,12 @@
   },
   "author": "Adam Harpur",
   "license": "MIT",
-  "devDependencies": {
-    "@vuepress/theme-blog": "^2.3.2",
-    "vuepress": "^1.5.4"
-  },
   "dependencies": {
-    "autoprefixer": "^10.0.0",
+    "moment": "^2.24.0",
     "tailwindcss": "^1.8.10"
+  },
+  "devDependencies": {
+    "vuepress": "^1.5.4",
+    "vuepress-plugin-reading-time": "^0.1.1"
   }
 }
