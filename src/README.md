@@ -1,6 +1,5 @@
 ---
 home: true
-blog_index: true
 description: Web Back Garden
 heroText: </>
 tagline: my web back garden
