@@ -1,17 +1,25 @@
 <template>
   <main class="home" aria-labelledby="main-title">
-    <header v-if="data.blogPageTitle" class="hero text-primary bg-background-primary">
+    <header
+      v-if="data.blogPageTitle"
+      class="hero text-primary bg-background-primary"
+    >
       <h1 id="main-title">Blog</h1>
 
-      <p class="description opacity-75">{{ data.tagline || $description || 'Welcome To My Blogs' }}</p>
+      <p class="description opacity-75">
+        {{ data.tagline || $description || "Welcome To My Blogs" }}
+      </p>
     </header>
 
-    <Content class="theme-default-content custom"/>
+    <Content class="theme-default-content custom" />
 
     <div>
       <div class="flex-grow">
-        <div v-for="post in posts" class="mb-12 bg-background-content p-4 rounded-lg shadow-lg">
-          <BlogPost :post="post"/>
+        <div
+          v-for="post in posts"
+          class="mb-12 bg-background-content p-4 rounded-lg shadow-lg"
+        >
+          <BlogPost :post="post" />
         </div>
       </div>
     </div>
@@ -21,8 +29,6 @@
 <script>
 import NavLink from "@theme/components/NavLink.vue";
 import BlogPost from "@theme/components/BlogPost.vue";
-
-
 
 export default {
   components: { BlogPost, NavLink },
@@ -35,19 +41,19 @@ export default {
     actionLink() {
       return {
         link: this.data.actionLink,
-        text: this.data.actionText
+        text: this.data.actionText,
       };
     },
 
     posts() {
       return this.$site.pages
-        .filter(x => x.path.startsWith("/blog/") && !x.frontmatter.blog_index)
+        .filter((x) => x.path.startsWith("/blog/") && !x.frontmatter.blog_index)
 
         .sort(
           (a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
         );
-    }
-  }
+    },
+  },
 };
 </script>
 

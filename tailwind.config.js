@@ -32,9 +32,9 @@ module.exports = {
       title: "var(--title-color)",
       bg: "var(--bg-color)",
       red: {
-        "100": "#FFF5F5",
-        "400": "#FC8181",
-        "700": "#C53030",
+        100: "#FFF5F5",
+        400: "#FC8181",
+        700: "#C53030",
       },
       gray: {
         dark: "#121212",
@@ -69,4 +69,4 @@ module.exports = {
   },
   variants: {},
   plugins: [],
-}
+};

@@ -1,40 +1,48 @@
 <template>
   <header class="navbar">
-    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
+    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')" />
 
     <router-link :to="$localePath" class="home-link">
       <img
-        class="logo"
         v-if="$site.themeConfig.logo"
+        class="logo"
         :src="$withBase($site.themeConfig.logo)"
         :alt="$siteTitle"
-      >
+      />
       <span
+        v-if="$siteTitle"
         ref="siteName"
         class="site-name"
-        v-if="$siteTitle"
         :class="{ 'can-hide': $site.themeConfig.logo }"
-      >{{ $siteTitle }}</span>
+        >{{ $siteTitle }}</span
+      >
     </router-link>
 
     <div
       class="links"
-      :style="linksWrapMaxWidth ? {
-        'max-width': linksWrapMaxWidth + 'px'
-      } : {}"
+      :style="
+        linksWrapMaxWidth
+          ? {
+              'max-width': linksWrapMaxWidth + 'px',
+            }
+          : {}
+      "
     >
-      <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia"/>
+      <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia" />
       <SearchBox
-        v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"
+        v-else-if="
+          $site.themeConfig.search !== false &&
+          $page.frontmatter.search !== false
+        "
       />
-      <NavLinks class="can-hide"/>
+      <NavLinks class="can-hide" />
 
       <!-- Theme Switcher -->
       <button
         role="button"
         aria-label="Toggle dark/light"
-        @click.prevent="toggleTheme"
         class="can-hide ml-4 text-primary bg-transparent border-0 focus:outline-none hover:text-accent"
+        @click.prevent="toggleTheme"
       >
         <svg
           v-if="theme === 'theme-dark'"
@@ -76,7 +84,6 @@
         </svg>
       </button>
       <!-- End Theme Switcher -->
-      
     </div>
   </header>
 </template>
@@ -88,26 +95,30 @@ import SidebarButton from "@theme/components/SidebarButton.vue";
 import NavLinks from "@theme/components/NavLinks.vue";
 
 export default {
+  components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox },
   props: {
     theme: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
-  components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox },
 
   data() {
     return {
-      linksWrapMaxWidth: null
+      linksWrapMaxWidth: null,
     };
   },
-  methods: {
-    toggleTheme() {
-      const newTheme =
-        this.theme === "theme-light" ? "theme-dark" : "theme-light";
-      localStorage.setItem("theme", newTheme);
-      this.$emit("themeChanged", newTheme);
-    }
+
+  computed: {
+    algolia() {
+      return (
+        this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
+      );
+    },
+
+    isAlgoliaSearch() {
+      return this.algolia && this.algolia.apiKey && this.algolia.indexName;
+    },
   },
 
   mounted() {
@@ -128,18 +139,14 @@ export default {
     handleLinksWrapWidth();
     window.addEventListener("resize", handleLinksWrapWidth, false);
   },
-
-  computed: {
-    algolia() {
-      return (
-        this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
-      );
+  methods: {
+    toggleTheme() {
+      const newTheme =
+        this.theme === "theme-light" ? "theme-dark" : "theme-light";
+      localStorage.setItem("theme", newTheme);
+      this.$emit("themeChanged", newTheme);
     },
-
-    isAlgoliaSearch() {
-      return this.algolia && this.algolia.apiKey && this.algolia.indexName;
-    }
-  }
+  },
 };
 
 function css(el, property) {
@@ -209,4 +216,3 @@ $navbar-horizontal-padding = 1.5rem;
   }
 }
 </style>
-

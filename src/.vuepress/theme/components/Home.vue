@@ -5,71 +5,67 @@
         v-if="data.heroImage"
         :src="$withBase(data.heroImage)"
         :alt="data.heroAlt || 'hero'"
-      >
+      />
 
-      <h1 v-if="data.heroText !== null" id="main-title">{{ data.heroText || $title || 'Hello' }}</h1>
+      <h1 v-if="data.heroText !== null" id="main-title">
+        {{ data.heroText || $title || "Hello" }}
+      </h1>
 
       <p class="description opacity-75">
-        {{ data.tagline || $description || 'Welcome to your VuePress site' }}
+        {{ data.tagline || $description || "Welcome to your VuePress site" }}
       </p>
 
-      <p
-        class="action"
-        v-if="data.actionText && data.actionLink"
-      >
+      <p v-if="data.actionText && data.actionLink" class="action">
         <NavLink
           class="action-button text-bg bg-background-accent hover:bg-accenthover hover:text-bg"
           :item="actionLink"
         />
-      </p> 
+      </p>
     </header>
 
     <div
-      class="features bg-background-content"
       v-if="data.features && data.features.length"
+      class="features bg-background-content"
     >
       <div
-        class="feature p-4"
         v-for="(feature, index) in data.features"
         :key="index"
+        class="feature p-4"
       >
         <h2>{{ feature.title }}</h2>
         <p>{{ feature.details }}</p>
       </div>
     </div>
 
-    <Content class="theme-default-content custom"/>
-    <BlogPage/>
+    <Content class="theme-default-content custom" />
+    <BlogPage />
 
-    <div
-      class="footer"
-      v-if="data.footer"
-    >
+    <div v-if="data.footer" class="footer">
       {{ data.footer }}
     </div>
   </main>
 </template>
 
 <script>
-import NavLink from '@theme/components/NavLink.vue'
+import NavLink from "@theme/components/NavLink.vue";
 import BlogPage from "@theme/components/BlogPage.vue";
 
 export default {
-  components: { NavLink, BlogPage},
+  components: { NavLink, BlogPage },
 
   computed: {
-    data () {
-      return this.$page.frontmatter
+    data() {
+      return this.$page.frontmatter;
     },
 
-    actionLink () {
+    actionLink() {
       return {
         link: this.data.actionLink,
-        text: this.data.actionText
-      }
-    }
-  }
-}
+        text: this.data.actionText,
+      };
+    },
+  },
+};
 </script>
 
 <style lang="stylus">
@@ -93,18 +89,18 @@ export default {
       max-width 35rem
       font-size 1.6rem
       line-height 1.3
-      
+
     .action-button
       display inline-block
       font-size 1.2rem
-      
-      
+
+
       padding 0.8rem 1.6rem
       border-radius 4px
       transition background-color .1s ease
       box-sizing border-box
       border-bottom 1px solid darken($accentColor, 10%)
-      
+
   .features
     border-top 1px solid var(--border-color)
     padding 1.2rem 0
@@ -123,12 +119,12 @@ export default {
       font-weight 500
       border-bottom none
       padding-bottom 0
-      
+
   .footer
     padding 2.5rem
     border-top 1px solid var(--border-color)
     text-align center
-    
+
 @media (max-width: $MQMobile)
   .home
     .features

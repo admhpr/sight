@@ -16,26 +16,23 @@
       <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
 
       <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
-        <slot name="sidebar-top" slot="top"/>
-        <slot name="sidebar-bottom" slot="bottom"/>
+        <slot slot="top" name="sidebar-top" />
+        <slot slot="bottom" name="sidebar-bottom" />
       </Sidebar>
 
-      <Home v-if="$page.frontmatter.home"/>
-      <BlogPage v-else-if="$page.frontmatter.blogpage"/>
+      <Home v-if="$page.frontmatter.home" />
+      <BlogPage v-else-if="$page.frontmatter.blogpage" />
 
       <Page v-else :sidebar-items="sidebarItems">
-        <slot name="page-top" slot="top"/>
-        <slot name="page-bottom" slot="bottom"/>
+        <slot slot="top" name="page-top" />
+        <slot slot="bottom" name="page-bottom" />
       </Page>
 
       <footer class="bg-background-primary text-primary">
-      <div class="container mx-auto flex  content-center">
-        
+        <div class="container mx-auto flex content-center">
           <div></div>
-        
-        
-      </div>
-    </footer>
+        </div>
+      </footer>
     </div>
   </div>
 </template>
@@ -54,7 +51,7 @@ export default {
   data() {
     return {
       isSidebarOpen: false,
-      theme: ""
+      theme: "",
     };
   },
 
@@ -98,11 +95,11 @@ export default {
         {
           "no-navbar": !this.shouldShowNavbar,
           "sidebar-open": this.isSidebarOpen,
-          "no-sidebar": !this.shouldShowSidebar
+          "no-sidebar": !this.shouldShowSidebar,
         },
-        userPageClass
+        userPageClass,
       ];
-    }
+    },
   },
 
   mounted() {
@@ -123,7 +120,7 @@ export default {
     onTouchStart(e) {
       this.touchStart = {
         x: e.changedTouches[0].clientX,
-        y: e.changedTouches[0].clientY
+        y: e.changedTouches[0].clientY,
       };
     },
 
@@ -137,12 +134,9 @@ export default {
           this.toggleSidebar(false);
         }
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css"></style>
-
-
-

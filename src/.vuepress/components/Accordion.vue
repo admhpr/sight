@@ -7,12 +7,12 @@
         @click.prevent="active = !active"
       >
         <strong>{{ title }}</strong>
-        <span class="down-Arrow" v-show="!active">&#9660;</span>
-        <span class="up-Arrow" v-show="active">&#9650;</span>
+        <span v-show="!active" class="down-Arrow">&#9660;</span>
+        <span v-show="active" class="up-Arrow">&#9650;</span>
       </a>
     </div>
-    <div class="tab__content p-2" v-show="active">
-      <slot/>
+    <div v-show="active" class="tab__content p-2">
+      <slot />
     </div>
   </div>
 </template>
@@ -22,9 +22,8 @@ export default {
   props: ["title"],
   data() {
     return {
-      active: false
+      active: false,
     };
-  }
+  },
 };
 </script>
-
