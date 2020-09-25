@@ -21,6 +21,7 @@
     >
       <li
         v-for="(s, i) in suggestions"
+        :key="i"
         class="suggestion"
         :class="{ focused: i === focusIndex }"
         @mousedown="go(i)"

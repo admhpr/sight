@@ -17,6 +17,7 @@
       <div class="flex-grow">
         <div
           v-for="post in posts"
+          :key="post"
           class="mb-12 bg-background-content p-4 rounded-lg shadow-lg"
         >
           <BlogPost :post="post" />
@@ -31,7 +32,7 @@ import NavLink from "@theme/components/NavLink.vue";
 import BlogPost from "@theme/components/BlogPost.vue";
 
 export default {
-  components: { BlogPost, NavLink },
+  components: { BlogPost },
 
   computed: {
     data() {

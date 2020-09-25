@@ -85,7 +85,7 @@ export default {
 
     editLink() {
       if (this.$page.frontmatter.editLink === false) {
-        return;
+        return "";
       }
       const {
         repo,
@@ -104,6 +104,7 @@ export default {
           this.$page.relativePath
         );
       }
+      return "";
     },
 
     editLinkText() {

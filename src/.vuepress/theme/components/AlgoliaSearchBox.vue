@@ -10,8 +10,12 @@
 
 <script>
 export default {
-  props: ["options"],
-
+  props: {
+    options: {
+      type: String,
+      default: "",
+    },
+  },
   watch: {
     $lang(newValue) {
       this.update(this.options, newValue);
