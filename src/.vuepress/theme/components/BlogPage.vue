@@ -17,7 +17,7 @@
       <div class="flex-grow">
         <div
           v-for="post in posts"
-          :key="post"
+          :key="post.key"
           class="mb-12 bg-background-content p-4 rounded-lg shadow-lg"
         >
           <BlogPost :post="post" />
