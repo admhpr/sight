@@ -11,7 +11,7 @@
     <span
       v-for="(pageNumber, index) in pageNumbers"
       :key="pageNumber"
-      :class="index === selectedPageIndex ? 'bg-content' : ''"
+      :class="index === selectedPageIndex ? 'selected' : ''"
     >
       <a
         v-if="index < selectedPageIndex + 2 && index > selectedPageIndex - 1"
@@ -73,4 +73,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.selected {
+  background-color: #d6bcfa;
+}
+</style>
