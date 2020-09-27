@@ -44,7 +44,12 @@
 import { resolvePage, outboundRE, endingSlashRE } from "../util";
 
 export default {
-  props: ["sidebarItems"],
+  props: {
+    sidebarItems: {
+      type: Array,
+      required: true,
+    },
+  },
 
   computed: {
     lastUpdated() {
