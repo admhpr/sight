@@ -1,58 +1,64 @@
 <template>
   <main class="home" aria-labelledby="main-title">
     <header
-      v-if="data.blogPageTitle"
+      v-if="frontmatter.blogPageTitle"
       class="hero text-primary bg-background-primary"
     >
       <h1 id="main-title">Blog</h1>
 
       <p class="description opacity-75">
-        {{ data.tagline || $description || "Welcome To My Blogs" }}
+        {{ frontmatter.tagline || $description || "Welcome To My Blogs" }}
       </p>
     </header>
 
     <Content class="theme-default-content custom" />
 
-    <div>
-      <div class="flex-grow">
-        <div
-          v-for="post in posts"
-          :key="post.key"
-          class="mb-12 bg-background-content p-4 rounded-lg shadow-lg"
-        >
-          <BlogPost :post="post" />
-        </div>
-      </div>
-    </div>
+    <BlogPostContainer :posts="posts" :amount-of-pages="amountOfPages" />
   </main>
 </template>
 
 <script>
 import NavLink from "@theme/components/NavLink.vue";
-import BlogPost from "@theme/components/BlogPost.vue";
+import BlogPostContainer from "@theme/pages/blog/BlogPostContainer.vue";
 
+function* chunk(arr, chunkSize) {
+  for (let i = 0; i < arr.length; i += chunkSize) {
+    yield arr.slice(i, i + chunkSize);
+  }
+}
+const POSTS_PER_PAGE = 1;
 export default {
-  components: { BlogPost },
-
+  components: { BlogPostContainer },
+  data() {
+    return {
+      selectedPage: 0,
+    };
+  },
   computed: {
-    data() {
+    amountOfPages() {
+      return Math.ceil(this.sortedPosts.length / POSTS_PER_PAGE);
+    },
+    frontmatter() {
       return this.$page.frontmatter;
     },
 
     actionLink() {
       return {
-        link: this.data.actionLink,
-        text: this.data.actionText,
+        link: this.frontmatter.actionLink,
+        text: this.frontmatter.actionText,
       };
     },
 
-    posts() {
+    sortedPosts() {
       return this.$site.pages
         .filter((x) => x.path.startsWith("/blog/") && !x.frontmatter.blog_index)
 
         .sort(
           (a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
         );
+    },
+    posts() {
+      return [...chunk(this.sortedPosts, POSTS_PER_PAGE)][this.selectedPage];
     },
   },
 };

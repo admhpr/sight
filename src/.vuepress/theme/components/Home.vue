@@ -48,7 +48,7 @@
 
 <script>
 import NavLink from "@theme/components/NavLink.vue";
-import BlogPage from "@theme/components/BlogPage.vue";
+import BlogPage from "@theme/pages/blog/BlogPage.vue";
 
 export default {
   components: { NavLink, BlogPage },

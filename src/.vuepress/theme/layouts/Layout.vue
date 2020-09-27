@@ -39,7 +39,7 @@
 
 <script>
 import Home from "@theme/components/Home.vue";
-import BlogPage from "@theme/components/BlogPage.vue";
+import BlogPage from "@theme/pages/blog/BlogPage.vue";
 import Navbar from "@theme/components/Navbar.vue";
 import Page from "@theme/components/Page.vue";
 import Sidebar from "@theme/components/Sidebar.vue";
