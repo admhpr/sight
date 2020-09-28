@@ -9,7 +9,7 @@
         <BlogPost :post="post" />
       </div>
     </div>
-    <BlogPagination :amount-of-pages="amountOfPages" />
+    <BlogPagination :amount-of-pages="amountOfPages" v-on="$listeners" />
   </div>
 </template>
 

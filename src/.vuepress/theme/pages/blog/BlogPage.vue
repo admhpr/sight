@@ -13,7 +13,11 @@
 
     <Content class="theme-default-content custom" />
 
-    <BlogPostContainer :posts="posts" :amount-of-pages="amountOfPages" />
+    <BlogPostContainer
+      :posts="posts"
+      :amount-of-pages="amountOfPages"
+      @page-selected="onPageSelected"
+    />
   </main>
 </template>
 
@@ -59,6 +63,11 @@ export default {
     },
     posts() {
       return [...chunk(this.sortedPosts, POSTS_PER_PAGE)][this.selectedPage];
+    },
+  },
+  methods: {
+    onPageSelected(pageIndex) {
+      this.selectedPage = pageIndex;
     },
   },
 };

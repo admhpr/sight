@@ -1,5 +1,5 @@
 ---
-title: Vuepress Basic Config
+title: Vuepress Basic Config 1
 date: 2019-06-24
 description: 'Basic config'
 ---

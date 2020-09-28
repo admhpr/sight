@@ -66,8 +66,10 @@ export default {
   },
   methods: {
     pageNumberSelected(index) {
-      console.log(index);
-      this.selectedPageIndex = index;
+      if (index >= 0 && index <= this.amountOfPages) {
+        this.selectedPageIndex = index;
+        this.$emit("page-selected", index);
+      }
     },
   },
 };
@@ -75,6 +77,6 @@ export default {
 
 <style scoped>
 .selected {
-  background-color: #d6bcfa;
+  background-color: var(--accent-compliment);
 }
 </style>
