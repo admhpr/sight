@@ -14,6 +14,7 @@ module.exports = {
     editLinkText: "Help us improve this page!",
     nav: [
       { text: "Blog", link: "/blog/" },
+      { text: "Tags", link: "/tags/" },
       { text: "Guide", link: "/content/" },
     ],
     sidebar: {
