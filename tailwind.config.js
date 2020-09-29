@@ -14,30 +14,24 @@ module.exports = {
       lg: "959px",
       // => @media (min-width: 9594px) { ... }
     },
+    backgroundColor: (theme) => ({
+      ...theme("colors"),
+      primary: "var(--bg-color)",
+      content: "var(--bg-content-color)",
+      code: "var(--bg-code)",
+      accent: "var(--accent-color)",
+    }),
     borderColor: {
       primary: "var(--border-color)",
       accent: "var(--accent-color)",
     },
-    extend: {},
-    colors: {
-      background: {
-        primary: "var(--bg-color)",
-        content: "var(--bg-content-color)",
-        code: "var(--bg-code)",
+    extend: {
+      colors: {
+        primary: "var(--body-color)",
         accent: "var(--accent-color)",
-      },
-      primary: "var(--body-color)",
-      accent: "var(--accent-color)",
-      accenthover: "var(--accent-hover)",
-      title: "var(--title-color)",
-      bg: "var(--bg-color)",
-      red: {
-        100: "#FFF5F5",
-        400: "#FC8181",
-        700: "#C53030",
-      },
-      gray: {
-        dark: "#121212",
+        accenthover: "var(--accent-hover)",
+        title: "var(--title-color)",
+        bg: "var(--bg-color)",
       },
     },
     fontFamily: {

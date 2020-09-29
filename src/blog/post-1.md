@@ -12,7 +12,7 @@ tags: ['Programming', 'Vuepress', 'Tailwind CSS']
 ```js
 <template>
    <main class="home" aria-labelledby="main-title">  //From Home.vue
-    <header class="hero text-primary bg-background-primary">
+    <header class="hero text-primary bg-primary">
       <h1 id="main-title">Blog</h1>
 
       <p class="description opacity-75">{{ data.tagline || $description || 'Welcome To My Blogs' }}</p>
@@ -22,7 +22,7 @@ tags: ['Programming', 'Vuepress', 'Tailwind CSS']
 
     <div>
       <div class="flex-grow">
-        <div v-for="post in posts" class="mb-12 bg-background-content p-4 rounded-lg shadow-lg">
+        <div v-for="post in posts" class="mb-12 bg-content p-4 rounded-lg shadow-lg">
           <span class="text-3xl font-bold">
             <router-link :to="post.path" class="text-primary pb-1">{{ post.title}}</router-link>
           </span>
@@ -32,7 +32,7 @@ tags: ['Programming', 'Vuepress', 'Tailwind CSS']
             <span>{{post.readingTime.text}}</span>
             <span class="px-6 py-4">
               <span v-for="tag in post.frontmatter.tags"
-                class="inline-block bg-background-primary rounded-full px-3 py-1 text-sm font-semibold text-primary mr-2"
+                class="inline-block bg-primary rounded-full px-3 py-1 text-sm font-semibold text-primary mr-2"
               > #{{ tag }}</span>
             </span>
           </div>

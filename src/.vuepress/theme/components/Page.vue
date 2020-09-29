@@ -2,7 +2,7 @@
   <main class="page">
     <slot name="top" />
 
-    <Content class="theme-default-content bg-background-content" />
+    <Content class="theme-default-content bg-content" />
 
     <footer class="page-edit">
       <div v-if="editLink" class="edit-link">

@@ -3,7 +3,7 @@
     <div class="tab__header">
       <a
         href="#"
-        class="tab__link p-4 block bg-background-content hover:bg-background-primary no-underline text-accent border-b-2 border-accent flex justify-between"
+        class="tab__link p-4 block bg-content hover:bg-primary no-underline text-accent border-b-2 border-accent flex justify-between"
         @click.prevent="active = !active"
       >
         <strong>{{ title }}</strong>

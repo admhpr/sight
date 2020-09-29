@@ -1,6 +1,6 @@
 <template>
   <main class="home" aria-labelledby="main-title">
-    <header class="hero text-primary bg-background-primary">
+    <header class="hero text-primary bg-primary">
       <img
         v-if="data.heroImage"
         :src="$withBase(data.heroImage)"
@@ -17,7 +17,7 @@
 
       <p v-if="data.actionText && data.actionLink" class="action">
         <NavLink
-          class="action-button text-bg bg-background-accent hover:bg-accenthover hover:text-bg"
+          class="action-button text-bg bg-accent hover:bg-accenthover hover:text-bg"
           :item="actionLink"
         />
       </p>
@@ -25,7 +25,7 @@
 
     <div
       v-if="data.features && data.features.length"
-      class="features bg-background-content"
+      class="features bg-content"
     >
       <div
         v-for="(feature, index) in data.features"

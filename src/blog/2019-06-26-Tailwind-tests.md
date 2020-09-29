@@ -15,22 +15,22 @@ sidebar: auto
 ## Theme
 
 ```
-<div class="bg-background-primary">
+<div class="bg-primary">
 <span class="text-accent">Accent color</span>
 </div>
 ```
 
-<div class="bg-background-primary">
+<div class="bg-primary">
 <span class="text-accent">Accent color</span>
 </div>
 
 ```
-<div class="bg-background-primary">
+<div class="bg-primary">
 <span class="text-accent opacity-75">Accent hover opacity .75</span>
 </div>
 ```
 
-<div class="bg-background-primary">
+<div class="bg-primary">
 <span class="text-accent opacity-75">Accent hover opacity .75</span>
 </div>
 

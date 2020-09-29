@@ -4,7 +4,7 @@
       <div
         v-for="post in posts"
         :key="post.key"
-        class="mb-12 bg-background-content p-4 rounded-lg shadow-lg"
+        class="mb-12 bg-content p-4 rounded-lg shadow-lg"
       >
         <BlogPost :post="post" />
       </div>

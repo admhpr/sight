@@ -27,7 +27,7 @@ description: Simple description
 
 ```css
 .custom-block {
-    @apply bg-background-primary m-4 p-4 shadow
+    @apply bg-primary m-4 p-4 shadow
 }
 .custom-block.tip {
     @apply rounded
@@ -69,7 +69,7 @@ from [https://vuejsexamples.com/an-accordion-using-vuejs-and-tailwind-css/](http
     <div class="tab__header">
       <a
         href="#"
-        class="tab__link p-4 block bg-background-content hover:bg-background-primary no-underline text-accent border-b-2 border-accent flex justify-between"
+        class="tab__link p-4 block bg-content hover:bg-primary no-underline text-accent border-b-2 border-accent flex justify-between"
         @click.prevent="active = !active"
       >
         <strong>{{ title }}</strong>

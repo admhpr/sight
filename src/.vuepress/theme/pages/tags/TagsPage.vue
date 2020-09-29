@@ -1,14 +1,19 @@
 <template>
-  <main class="home" aria-labelledby="main-title">
-    <section>
-      <span
-        v-for="tag in Object.keys(tags)"
-        :key="tag"
-        class="text-gray-500 bg-gray-200 h-10 rounded-full px-3 py-1 text-xs select-none"
-        >{{ tag }}</span
-      >
-    </section>
-  </main>
+  <section class="bg-indigo-dark h-50 p-8">
+    <div class="container mx-auto py-8">
+      <nav class="flex">
+        <div class="bg-indigo nav-item mt-20 w-full sm:inline-block">
+          <a
+            v-for="tag in Object.keys(tags)"
+            :key="tag"
+            class="py-3 px-4 font-medium mr-3 hover:bg-indigo-darker"
+          >
+            {{ tag }}
+          </a>
+        </div>
+      </nav>
+    </div>
+  </section>
 </template>
 
 <script>
