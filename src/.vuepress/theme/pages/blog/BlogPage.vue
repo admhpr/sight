@@ -1,9 +1,6 @@
 <template>
   <main class="home" aria-labelledby="main-title">
-    <header
-      v-if="frontmatter.blogPageTitle"
-      class="hero text-primary bg-primary"
-    >
+    <header v-if="frontmatter.blogPageTitle" class="hero text-primary">
       <h1 id="main-title">Blog</h1>
 
       <p class="description opacity-75">

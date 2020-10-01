@@ -1,16 +1,14 @@
 <template>
-  <section class="bg-indigo-dark h-50 p-8">
+  <section class="bg-indigo-800 h-50 p-8">
     <div class="container mx-auto py-8">
       <nav class="flex">
-        <div class="bg-indigo nav-item mt-20 w-full sm:inline-block">
-          <a
-            v-for="tag in Object.keys(tags)"
-            :key="tag"
-            class="py-3 px-4 font-medium mr-3 hover:bg-indigo-darker"
-          >
-            {{ tag }}
-          </a>
-        </div>
+        <a
+          v-for="tag in Object.keys(tags)"
+          :key="tag"
+          class="py-3 px-4 font-medium text-white"
+        >
+          {{ tag }}
+        </a>
       </nav>
     </div>
   </section>

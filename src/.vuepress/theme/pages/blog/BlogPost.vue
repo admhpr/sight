@@ -13,7 +13,7 @@
         <span
           v-for="tag in post.frontmatter.tags"
           :key="tag"
-          class="inline-block bg-primary rounded-full px-3 py-1 text-sm font-semibold text-primary mr-2"
+          class="inline-block` rounded-full px-3 py-1 text-sm font-semibold text-primary mr-2"
           >#{{ tag }}</span
         >
       </span>

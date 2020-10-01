@@ -1,6 +1,6 @@
 <template>
   <main class="home" aria-labelledby="main-title">
-    <header class="hero text-primary bg-primary">
+    <header class="hero text-primary">
       <img
         v-if="data.heroImage"
         :src="$withBase(data.heroImage)"
@@ -23,10 +23,7 @@
       </p>
     </header>
 
-    <div
-      v-if="data.features && data.features.length"
-      class="features bg-content"
-    >
+    <div v-if="data.features && data.features.length" class="features">
       <div
         v-for="(feature, index) in data.features"
         :key="index"

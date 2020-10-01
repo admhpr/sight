@@ -1,7 +1,7 @@
 <template>
   <div class="font-sans" :class="theme">
     <div
-      class="theme-container bg-primary text-primary"
+      class="theme-container bg-main-background text-primary"
       :class="pageClasses"
       @touchstart="onTouchStart"
       @touchend="onTouchEnd"
@@ -29,7 +29,7 @@
         <slot slot="bottom" name="page-bottom" />
       </Page>
 
-      <footer class="bg-primary text-primary">
+      <footer class="text-primary">
         <div class="container mx-auto flex content-center">
           <div></div>
         </div>
