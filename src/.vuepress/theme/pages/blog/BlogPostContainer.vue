@@ -9,7 +9,7 @@
         <BlogPost :post="post" />
       </div>
     </div>
-    <BlogPagination :amount-of-pages="amountOfPages" v-on="$listeners" />
+    <BlogPagination :posts-per-page="postsPerPage" v-on="$listeners" />
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
       type: Array,
       default: () => [],
     },
-    amountOfPages: {
+    postsPerPage: {
       type: Number,
       default: 1,
     },

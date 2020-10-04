@@ -13,18 +13,16 @@
         </a>
       </nav>
     </div>
-    <BlogPostContainer
-      :posts="selectedPosts"
-      :amount-of-pages="amountOfPages"
-      @page-selected="onPageSelected"
-    />
+    <BlogPage :posts-to-render="selectedPosts" />
   </section>
 </template>
 
 <script>
-import BlogPostContainer from "@theme/pages/blog/BlogPostContainer.vue";
+import BlogPage from "@theme/pages/blog/BlogPage.vue";
 export default {
-  components: { BlogPostContainer },
+  components: {
+    BlogPage,
+  },
   data() {
     return {
       selectedTag: "",

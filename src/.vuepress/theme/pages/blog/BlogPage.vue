@@ -12,7 +12,7 @@
 
     <BlogPostContainer
       :posts="posts"
-      :amount-of-pages="amountOfPages"
+      :posts-per-page="postsPerPage"
       @page-selected="onPageSelected"
     />
   </main>
@@ -30,14 +30,20 @@ function* chunk(arr, chunkSize) {
 const POSTS_PER_PAGE = 1;
 export default {
   components: { BlogPostContainer },
+  props: {
+    postsToRender: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {
       selectedPage: 0,
     };
   },
   computed: {
-    amountOfPages() {
-      return Math.ceil(this.sortedPosts.length / POSTS_PER_PAGE);
+    postsPerPage() {
+      return Math.ceil(this.basePosts.length / POSTS_PER_PAGE);
     },
     frontmatter() {
       return this.$page.frontmatter;
@@ -58,8 +64,11 @@ export default {
           (a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
         );
     },
+    basePosts() {
+      return this.postsToRender.length ? this.postsToRender : this.sortedPosts;
+    },
     posts() {
-      return [...chunk(this.sortedPosts, POSTS_PER_PAGE)][this.selectedPage];
+      return [...chunk(this.basePosts, POSTS_PER_PAGE)][this.selectedPage];
     },
   },
   methods: {

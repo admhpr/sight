@@ -21,23 +21,23 @@
       >
     </span>
     <span
-      v-if="amountOfPages > 2 && selectedPageIndex < amountOfPages - 2"
+      v-if="postsPerPage > 2 && selectedPageIndex < postsPerPage - 2"
       class="border px-4 py-2 cursor-not-allowed text-gray-400"
       >&hellip;</span
     >
 
     <a
-      v-if="amountOfPages > 2 && selectedPageIndex < amountOfPages - 3"
+      v-if="postsPerPage > 2 && selectedPageIndex < postsPerPage - 3"
       class="block border px-4 py-2 hover:bg-gray-200 text-gray-600"
-      @click="pageNumberSelected(amountOfPages - 2)"
-      >{{ amountOfPages - 1 }}</a
+      @click="pageNumberSelected(postsPerPage - 2)"
+      >{{ postsPerPage - 1 }}</a
     >
 
     <a
-      v-if="amountOfPages > 2 && selectedPageIndex < amountOfPages - 2"
+      v-if="postsPerPage > 2 && selectedPageIndex < postsPerPage - 2"
       class="block border px-4 py-2 hover:bg-gray-200 text-gray-600"
-      @click="pageNumberSelected(amountOfPages - 1)"
-      >{{ amountOfPages }}</a
+      @click="pageNumberSelected(postsPerPage - 1)"
+      >{{ postsPerPage }}</a
     >
 
     <a
@@ -52,7 +52,7 @@
 <script>
 export default {
   props: {
-    amountOfPages: { type: Number, default: 0 },
+    postsPerPage: { type: Number, default: 0 },
   },
   data() {
     return {
@@ -61,12 +61,12 @@ export default {
   },
   computed: {
     pageNumbers() {
-      return new Array(this.amountOfPages);
+      return new Array(this.postsPerPage);
     },
   },
   methods: {
     pageNumberSelected(index) {
-      if (index >= 0 && index <= this.amountOfPages) {
+      if (index >= 0 && index <= this.postsPerPage) {
         this.selectedPageIndex = index;
         this.$emit("page-selected", index);
       }
