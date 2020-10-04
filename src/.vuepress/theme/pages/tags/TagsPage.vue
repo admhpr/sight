@@ -1,6 +1,6 @@
 <template>
-  <section class="bg-indigo-700 h-50 p-8">
-    <div class="container mx-auto py-8">
+  <section>
+    <div class="container mx-auto mt-24 bg-indigo-700 h-50 p-8">
       <nav class="flex">
         <a
           v-for="tag in Object.keys(tags)"
@@ -13,11 +13,18 @@
         </a>
       </nav>
     </div>
+    <BlogPostContainer
+      :posts="selectedPosts"
+      :amount-of-pages="amountOfPages"
+      @page-selected="onPageSelected"
+    />
   </section>
 </template>
 
 <script>
+import BlogPostContainer from "@theme/pages/blog/BlogPostContainer.vue";
 export default {
+  components: { BlogPostContainer },
   data() {
     return {
       selectedTag: "",
@@ -35,6 +42,9 @@ export default {
         }
       });
       return allTags;
+    },
+    selectedPosts() {
+      return this.tags[this.selectedTag];
     },
     postsTags() {
       return this.$site.pages
