@@ -195,7 +195,7 @@ function flatten(items, res) {
   .edit-link
     display inline-block
     a
-      color var(--body-color)
+      color var(--font-color)
       opacity .75
       margin-right 0.25rem
   .last-updated
@@ -203,7 +203,7 @@ function flatten(items, res) {
     font-size 0.9em
     .prefix
       font-weight 500
-      color var(--body-color)
+      color var(--font-color)
       opacity .75
     .time
       font-weight 400

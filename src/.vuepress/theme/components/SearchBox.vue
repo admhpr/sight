@@ -183,7 +183,7 @@ export default {
     cursor text
     width 10rem
     height: 2rem
-    color var(--body-color)
+    color var(--font-color)
     opacity .75
     display inline-block
     border 1px solid var(--border-color)
@@ -216,7 +216,7 @@ export default {
     cursor pointer
     a
       white-space normal
-      color var(--body-color)
+      color var(--font-color)
       opacity .75
       .page-title
         font-weight 600

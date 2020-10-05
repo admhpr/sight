@@ -1,11 +1,11 @@
 <template>
   <section>
-    <div class="container mx-auto mt-24 bg-indigo-700 h-50 p-8">
-      <nav class="flex">
+    <div class="flex justify-center mx-auto mt-24">
+      <nav class="">
         <a
           v-for="tag in Object.keys(tags)"
           :key="tag"
-          class="no-underline text-white py-3 px-4 font-medium mr-3 bg-indigo-600 hover:bg-indigo-800 active:bg-indigo-800"
+          class="text-white py-3 px-4 font-medium mr-3 bg-indigo-600 hover:bg-indigo-800 active:bg-indigo-800"
           :class="selectedTag === tag ? 'bg-indigo-800 ' : ''"
           @click="onTagSelect(tag)"
         >

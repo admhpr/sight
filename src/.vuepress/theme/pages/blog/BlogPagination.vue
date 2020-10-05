@@ -77,6 +77,6 @@ export default {
 
 <style scoped>
 .selected {
-  background-color: var(--accent-compliment);
+  border-bottom: 5px var(--accent-color) solid;
 }
 </style>

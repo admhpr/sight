@@ -1,6 +1,7 @@
 ---
 title: Vuepress Basic Config 3
 date: 2019-06-24
+tags: ["serverless", "foo", "bar"]
 description: 'Basic config'
 ---
 

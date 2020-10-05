@@ -16,7 +16,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: "var(--body-color)",
+        primary: "var(--font-color)",
         accent: "var(--accent-color)",
         accenthover: "var(--accent-hover)",
         title: "var(--title-color)",

@@ -9,7 +9,7 @@ description: Simple description
 
 | CSS Variables  | Vuepress Variables | Tailwind            | Note |
 |----------------|--------------------|---------------------|------|
-| --body-color   | $textColor         | primary             |      |
+| --font-color   | $textColor         | primary             |      |
 | --accent-color | $accentColor       | accent              |      |
 | --accent-hover |                    | accenthover         |      |
 | --border-color | $borderColor       | borderColor-primary |      |
