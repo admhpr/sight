@@ -9,7 +9,7 @@
           :class="selectedTag === tag ? 'bg-indigo-800 ' : ''"
           @click="onTagSelect(tag)"
         >
-          {{ tag }}
+          {{ tag }} <span>{{ tags[tag].length }}</span>
         </a>
       </nav>
     </div>
