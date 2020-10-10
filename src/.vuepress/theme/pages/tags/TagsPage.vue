@@ -5,8 +5,8 @@
         <a
           v-for="tag in Object.keys(tags)"
           :key="tag"
-          class="text-white py-3 px-4 font-medium mr-3 bg-indigo-600 hover:bg-indigo-800 active:bg-indigo-800"
-          :class="selectedTag === tag ? 'bg-indigo-800 ' : ''"
+          class="tag text-primary py-3 px-4 font-medium mr-3 hover:bg-gray-200"
+          :class="selectedTag === tag ? 'tag-rotate ' : ''"
           @click="onTagSelect(tag)"
         >
           {{ tag }} <span>{{ tags[tag].length }}</span>
@@ -63,4 +63,12 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.tag {
+  border-style: solid;
+  border-width: 3px;
+  border-color: #935347 #ede9ce #64706c #c7ad88;
+}
+.tag-rotate {
+}
+</style>
