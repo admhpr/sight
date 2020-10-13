@@ -187,6 +187,8 @@ function flatten(items, res) {
   padding-bottom 2rem
   display block
 
+
+
 .page-edit
   @extend $wrapper
   padding-top 1rem

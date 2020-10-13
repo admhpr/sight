@@ -1,12 +1,12 @@
 <template>
   <section>
-    <div class="flex justify-center mx-auto mt-24">
-      <nav class="">
+    <div class="flex justify-center mx-auto pt-24">
+      <nav>
         <a
           v-for="tag in Object.keys(tags)"
           :key="tag"
           class="tag text-primary py-3 px-4 font-medium mr-3 hover:bg-gray-200"
-          :class="selectedTag === tag ? 'tag-rotate ' : ''"
+          :class="selectedTag === tag ? 'tag-selected ' : ''"
           @click="onTagSelect(tag)"
         >
           {{ tag }} <span>{{ tags[tag].length }}</span>
@@ -69,6 +69,7 @@ export default {
   border-width: 3px;
   border-color: #935347 #ede9ce #64706c #c7ad88;
 }
-.tag-rotate {
+.tag-selected {
+  box-shadow: 5px 5px var(--font-color);
 }
 </style>

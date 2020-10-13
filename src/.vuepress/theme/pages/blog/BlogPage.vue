@@ -1,5 +1,5 @@
 <template>
-  <main class="home" aria-labelledby="main-title">
+  <main aria-labelledby="main-title">
     <header v-if="frontmatter.blogPageTitle" class="hero text-primary">
       <h1 id="main-title">Blog</h1>
 
