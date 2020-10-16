@@ -1,5 +1,5 @@
 <template>
-  <main class="home" aria-labelledby="main-title">
+  <section class="" aria-labelledby="main-title">
     <header class="hero text-primary">
       <img
         v-if="data.heroImage"
@@ -40,7 +40,7 @@
     <div v-if="data.footer" class="footer">
       {{ data.footer }}
     </div>
-  </main>
+  </section>
 </template>
 
 <script>

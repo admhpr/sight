@@ -1,5 +1,5 @@
 <template>
-  <main class="page">
+  <section class="page">
     <slot name="top" />
 
     <Content class="theme-default-content bg-content" />
@@ -37,7 +37,7 @@
     </div>
 
     <slot name="bottom" />
-  </main>
+  </section>
 </template>
 
 <script>

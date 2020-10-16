@@ -1,5 +1,5 @@
 <template>
-  <div class="font-sans" :class="theme">
+  <div class="flex flex-col font-sans h-screen" :class="theme">
     <div
       class="theme-container bg-main-background text-primary"
       :class="pageClasses"
@@ -20,16 +20,17 @@
         <slot slot="bottom" name="sidebar-bottom" />
       </Sidebar>
 
-      <Home v-if="$page.frontmatter.home" />
-      <BlogPage v-else-if="$page.frontmatter.blogpage" />
-      <TagsPage v-else-if="$page.frontmatter.tagspage" />
+      <main class="main">
+        <Home v-if="$page.frontmatter.home" />
+        <BlogPage v-else-if="$page.frontmatter.blogpage" />
+        <TagsPage v-else-if="$page.frontmatter.tagspage" />
+        <Page v-else :sidebar-items="sidebarItems">
+          <slot slot="top" name="page-top" />
+          <slot slot="bottom" name="page-bottom" />
+        </Page>
+      </main>
 
-      <Page v-else :sidebar-items="sidebarItems">
-        <slot slot="top" name="page-top" />
-        <slot slot="bottom" name="page-bottom" />
-      </Page>
-
-      <footer class="text-primary">
+      <footer class="text-primary footer">
         <div class="container mx-auto flex content-center">
           <div></div>
         </div>
@@ -141,4 +142,38 @@ export default {
 };
 </script>
 
-<style src="prismjs/themes/prism-tomorrow.css"></style>
+<style lang="stylus" scoped>
+.main
+  padding $navbarHeight 2rem 0
+  margin 0px auto
+
+
+@media (max-width: $MQMobile)
+  .home
+    .features
+      flex-direction column
+    .feature
+      max-width 100%
+      padding 0 2.5rem
+
+@media (max-width: $MQMobileNarrow)
+  .home
+    padding-left 1.5rem
+    padding-right 1.5rem
+    .hero
+      img
+        max-height 210px
+        margin 2rem auto 1.2rem
+      h1
+        font-size 2rem
+      h1, .description, .action
+        margin 1.2rem auto
+      .description
+        font-size 1.2rem
+      .action-button
+        font-size 1rem
+        padding 0.6rem 1.2rem
+    .feature
+      h2
+        font-size 1.25rem
+</style>

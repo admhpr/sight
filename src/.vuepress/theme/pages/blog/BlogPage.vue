@@ -1,5 +1,5 @@
 <template>
-  <main aria-labelledby="main-title">
+  <section aria-labelledby="main-title">
     <header v-if="frontmatter.blogPageTitle" class="hero text-primary">
       <h1 id="main-title">Blog</h1>
 
@@ -15,7 +15,7 @@
       :posts-per-page="postsPerPage"
       @page-selected="onPageSelected"
     />
-  </main>
+  </section>
 </template>
 
 <script>
