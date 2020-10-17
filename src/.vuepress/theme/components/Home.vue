@@ -36,10 +36,6 @@
 
     <Content class="theme-default-content custom" />
     <BlogPage />
-
-    <div v-if="data.footer" class="footer">
-      {{ data.footer }}
-    </div>
   </section>
 </template>
 

@@ -30,11 +30,9 @@
         </Page>
       </main>
 
-      <footer class="text-primary footer">
-        <div class="container mx-auto flex content-center">
-          <div></div>
-        </div>
-      </footer>
+      <div v-if="data.footer" class="footer">
+        {{ data.footer }}
+      </div>
     </div>
   </div>
 </template>
