@@ -53,6 +53,7 @@ export default {
     return {
       isSidebarOpen: false,
       theme: "",
+      footer: "footer text",
     };
   },
 
