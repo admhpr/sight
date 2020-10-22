@@ -36,7 +36,9 @@
       </p>
     </div>
 
-    <slot name="bottom" />
+    <footer>
+      <slot name="footer"></slot>
+    </footer>
   </section>
 </template>
 

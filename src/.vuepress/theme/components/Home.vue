@@ -36,6 +36,12 @@
 
     <Content class="theme-default-content custom" />
     <BlogPage />
+
+    <footer>
+      <div class="bg-main-background text-primary p-10">
+        MIT Licensed | Copyright © 2019-present Adam Harpur
+      </div>
+    </footer>
   </section>
 </template>
 

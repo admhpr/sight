@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col font-sans h-screen" :class="theme">
+  <div class="flex flex-col font-sans" :class="theme">
     <div
-      class="theme-container bg-main-background text-primary"
+      class="theme-container h-screen bg-main-background text-primary"
       :class="pageClasses"
       @touchstart="onTouchStart"
       @touchend="onTouchEnd"
@@ -29,10 +29,6 @@
           <slot slot="bottom" name="page-bottom" />
         </Page>
       </main>
-
-      <div v-if="data.footer" class="footer">
-        {{ data.footer }}
-      </div>
     </div>
   </div>
 </template>
