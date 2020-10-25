@@ -15,10 +15,10 @@ module.exports = {
     nav: [
       { text: "Blog", link: "/blog/" },
       { text: "Tags", link: "/tags/" },
-      { text: "Guide", link: "/content/" },
+      { text: "Guide", link: "/guide/" },
     ],
     sidebar: {
-      "/content/": ["", "custom"],
+      "/guide/": ["", "custom"],
     },
   },
   plugins: ["vuepress-plugin-reading-time"],
@@ -28,4 +28,4 @@ module.exports = {
       require("autoprefixer"),
     ],
   },
-};
+}

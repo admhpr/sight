@@ -13,7 +13,9 @@
         </a>
       </nav>
     </div>
-    <BlogPage :posts-to-render="selectedPosts" />
+    <section class="main m-10">
+      <BlogPage :posts-to-render="selectedPosts" />
+    </section>
   </section>
 </template>
 

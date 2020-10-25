@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex-grow">
+    <div class="flex justify-center">
       <div
         v-for="post in posts"
         :key="post.key"
