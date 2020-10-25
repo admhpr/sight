@@ -21,8 +21,10 @@
       </div>
       <div class="text-lg p-5 mb-4">{{ post.frontmatter.description }}</div>
     </div>
-    <div class="flex justify-end">
-      <router-link :to="post.path" class="border rounded p-1 font-bold"
+    <div class="flex justify-end post-footer">
+      <router-link
+        :to="post.path"
+        class="border bg-white text-primary rounded p-1 font-bold"
         >Read More</router-link
       >
     </div>
@@ -46,4 +48,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.post-footer {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23000000' fill-opacity='0.3' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+}
+</style>
