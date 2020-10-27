@@ -187,7 +187,7 @@ function flatten(items, res) {
 
 .page
   padding-bottom 2rem
-  display block
+  background-color var(--bg-color)
 
 
 

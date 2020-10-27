@@ -139,7 +139,7 @@ export default {
 
 <style lang="stylus" scoped>
 .main
-  padding $navbarHeight 2rem 0
+  padding-top $navbarHeight 0
   margin 0px auto
 
 
