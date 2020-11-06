@@ -1,5 +1,5 @@
 <template>
-  <section class="page">
+  <section class="page w-full">
     <slot name="top" />
 
     <Content class="theme-default-content bg-content" />

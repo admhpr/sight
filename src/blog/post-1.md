@@ -18,7 +18,7 @@ tags: ['Programming', 'Vuepress', 'Tailwind CSS']
       <p class="description opacity-75">{{ data.tagline || $description || 'Welcome To My Blogs' }}</p>
     </header>
 
-    <Content class="theme-default-content custom"/>
+    <Content class="theme-default-content"/>
 
     <div>
       <div class="flex-grow">
