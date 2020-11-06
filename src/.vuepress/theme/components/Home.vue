@@ -1,18 +1,21 @@
 <template>
-  <section class="" aria-labelledby="main-title">
-    <header class="hero text-primary">
+  <section aria-labelledby="main-title">
+    <header>
       <img
         v-if="data.heroImage"
         :src="$withBase(data.heroImage)"
         :alt="data.heroAlt || 'hero'"
       />
 
-      <h1 v-if="data.heroText !== null" id="main-title">
-        {{ data.heroText || $title || "Hello" }}
+      <h1
+        v-if="data.heroText"
+        class="mb-5 text-2xl flex text-center justify-center"
+      >
+        {{ data.heroText || $title }}
       </h1>
 
-      <p class="description opacity-75">
-        {{ data.tagline || $description || "Welcome to your VuePress site" }}
+      <p>
+        {{ data.tagline || $description }}
       </p>
 
       <p v-if="data.actionText && data.actionLink" class="action">
@@ -35,10 +38,10 @@
     </div>
 
     <Content class="theme-default-content custom" />
-    <BlogPage />
+    <canvas id="canvas"></canvas>
 
     <footer>
-      <div class="bg-main-background text-primary p-10">
+      <div class="bg-main-background text-primary p-10 flex justify-center">
         MIT Licensed | Copyright © 2019-present Adam Harpur
       </div>
     </footer>
@@ -48,9 +51,10 @@
 <script>
 import NavLink from "@theme/components/NavLink.vue";
 import BlogPage from "@theme/pages/blog/BlogPage.vue";
+import SimplexNoise from "simplex-noise";
 
 export default {
-  components: { NavLink, BlogPage },
+  components: { NavLink },
 
   computed: {
     data() {
@@ -64,92 +68,71 @@ export default {
       };
     },
   },
+  mounted() {
+    window.requestAnimFrame = (function () {
+      return (
+        window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function (callback) {
+          window.setTimeout(callback, 1000 / 60);
+        }
+      );
+    })();
+
+    var canvas, ctx;
+    var width, height;
+    var freq = 0.09;
+    var offsetX = 10;
+    var perlin;
+    var xstart = Math.random() * 10;
+    var ystart = Math.random() * 10;
+
+    function setup() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas = document.getElementById("canvas");
+      ctx = canvas.getContext("2d");
+      perlin = new SimplexNoise();
+      canvas.width = width;
+      canvas.height = height;
+
+      draw();
+    }
+
+    function draw() {
+      requestAnimFrame(draw);
+
+      ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.fillStyle = "rgba(100, 10, 90, 0.9)";
+
+      xstart = 0.02;
+      ystart -= 0.01;
+
+      ctx.save();
+      ctx.translate(width / 2, height / 2);
+      let ynoise = ystart;
+      for (var x = -(width / 2) / offsetX; x < width / 2 / offsetX; x++) {
+        ynoise += 0.05;
+        let xnoise = xstart;
+        for (var y = -10; y < 10; y++) {
+          xnoise += 0.5;
+          var size = perlin.noise2D(xnoise, ynoise);
+          var pointX = perlin.noise2D(x * freq, y * freq) + x;
+          var pointY = perlin.noise2D(x * freq, y * freq) + y;
+
+          ctx.fillRect(pointX * offsetX, pointY * 50, size * 40, size * 1);
+        }
+      }
+      ctx.restore();
+    }
+    setup();
+  },
 };
 </script>
 
-<style lang="stylus">
-.home
-  padding $navbarHeight 2rem 0
-  max-width 960px
-  margin 0px auto
-  display block
-  .hero
-    text-align center
-    img
-      max-width: 100%
-      max-height 280px
-      display block
-      margin 3rem auto 1.5rem
-    h1
-      font-size 3rem
-    h1, .description, .action
-      margin 1.8rem auto
-    .description
-      max-width 35rem
-      font-size 1.6rem
-      line-height 1.3
-
-    .action-button
-      display inline-block
-      font-size 1.2rem
-
-
-      padding 0.8rem 1.6rem
-      border-radius 4px
-      transition background-color .1s ease
-      box-sizing border-box
-      border-bottom 1px solid darken($accentColor, 10%)
-
-  .features
-    border-top 1px solid var(--border-color)
-    padding 1.2rem 0
-    margin-top 2.5rem
-    display flex
-    flex-wrap wrap
-    align-items flex-start
-    align-content stretch
-    justify-content space-between
-  .feature
-    flex-grow 1
-    flex-basis 30%
-    max-width 30%
-    h2
-      font-size 1.4rem
-      font-weight 500
-      border-bottom none
-      padding-bottom 0
-
-  .footer
-    padding 2.5rem
-    border-top 1px solid var(--border-color)
-    text-align center
-
-@media (max-width: $MQMobile)
-  .home
-    .features
-      flex-direction column
-    .feature
-      max-width 100%
-      padding 0 2.5rem
-
-@media (max-width: $MQMobileNarrow)
-  .home
-    padding-left 1.5rem
-    padding-right 1.5rem
-    .hero
-      img
-        max-height 210px
-        margin 2rem auto 1.2rem
-      h1
-        font-size 2rem
-      h1, .description, .action
-        margin 1.2rem auto
-      .description
-        font-size 1.2rem
-      .action-button
-        font-size 1rem
-        padding 0.6rem 1.2rem
-    .feature
-      h2
-        font-size 1.25rem
-</style>
+<style lang="stylus"></style>

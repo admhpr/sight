@@ -1,9 +1,6 @@
 ---
 home: true
-description: Web Back Garden
-heroText: </>
-tagline: my web back garden
-actionLink: /content/
+heroText: "{ DOCUMENT THE JOURNEY }"
 ---
 
 

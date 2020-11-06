@@ -6,11 +6,13 @@
           post.title
         }}</router-link>
       </span>
-      <div class="mb-4 opacity-75 pt-1">
+      <div class="pt-1">
         <span>{{ formateDate(post.frontmatter.date) }}</span>
         <span>&middot;</span>
         <span>{{ post.readingTime.text }}</span>
-        <span class="py-4">
+      </div>
+      <div class="mb-2">
+        <span>
           <span
             v-for="tag in post.frontmatter.tags"
             :key="tag"
@@ -19,7 +21,10 @@
           >
         </span>
       </div>
-      <div class="text-lg p-5 mb-4">{{ post.frontmatter.description }}</div>
+      <hr />
+      <div class="mt-2 text-lg">
+        {{ post.frontmatter.description }}
+      </div>
     </div>
     <div class="flex justify-end post-footer">
       <router-link

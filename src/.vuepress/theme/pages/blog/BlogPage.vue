@@ -27,7 +27,7 @@ function* chunk(arr, chunkSize) {
     yield arr.slice(i, i + chunkSize);
   }
 }
-const POSTS_PER_PAGE = 1;
+const POSTS_PER_PAGE = 2;
 export default {
   components: { BlogPostContainer },
   props: {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex justify-center">
+    <div class="m-auto flex flex-col max-w-lg">
       <div
         v-for="post in posts"
         :key="post.key"
@@ -25,7 +25,7 @@ export default {
     },
     postsPerPage: {
       type: Number,
-      default: 1,
+      default: 5,
     },
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col font-sans" :class="theme">
     <div
-      class="theme-container h-screen bg-main-background text-primary"
+      class="theme-container pt-20 h-screen bg-main-background text-primary"
       :class="pageClasses"
       @touchstart="onTouchStart"
       @touchend="onTouchEnd"
