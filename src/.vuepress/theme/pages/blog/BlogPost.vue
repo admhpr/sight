@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="w-full px-24 py-2">
-      <span class="text-3xl font-bold">
+    <div class="max-w-lg w-64 min-w-full w-auto px-12 py-2">
+      <span class="text-2xl font-bold">
         <router-link :to="post.path" class="text-primary pb-1">{{
           post.title
         }}</router-link>
@@ -10,12 +10,12 @@
         <span>{{ formateDate(post.frontmatter.date) }}</span>
         <span>&middot;</span>
         <span>{{ post.readingTime.text }}</span>
-        <span class="px-6 py-4">
+        <span class="py-4">
           <span
             v-for="tag in post.frontmatter.tags"
             :key="tag"
-            class="inline-block` rounded-full px-3 py-1 text-sm font-semibold text-primary mr-2"
-            >#{{ tag }}</span
+            class="rounded-full py-1 text-sm font-semibold text-primary mr-1"
+            >#{{ lowerCase(tag) }}</span
           >
         </span>
       </div>
@@ -43,6 +43,9 @@ export default {
   methods: {
     formateDate(date) {
       return moment(date).format("MMM Do YYYY");
+    },
+    lowerCase(str) {
+      return `${str}`.toLowerCase();
     },
   },
 };
