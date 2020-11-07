@@ -38,7 +38,9 @@
     </div>
 
     <Content class="theme-default-content custom" />
-    <canvas id="canvas"></canvas>
+    <section class="flex justify-center">
+      <canvas id="canvas"></canvas>
+    </section>
 
     <footer>
       <div class="bg-main-background text-primary p-10 flex justify-center">
@@ -69,70 +71,82 @@ export default {
     },
   },
   mounted() {
-    window.requestAnimFrame = (function () {
-      return (
-        window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        window.oRequestAnimationFrame ||
-        window.msRequestAnimationFrame ||
-        function (callback) {
-          window.setTimeout(callback, 1000 / 60);
-        }
-      );
-    })();
-
-    var canvas, ctx;
-    var width, height;
-    var freq = 0.09;
-    var offsetX = 10;
-    var perlin;
-    var xstart = Math.random() * 10;
-    var ystart = Math.random() * 10;
+    let canvas;
+    let ctx;
+    let w, h;
+    let m;
+    let simplex;
+    let mx, my;
+    let now;
 
     function setup() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas = document.getElementById("canvas");
+      canvas = document.querySelector("#canvas");
       ctx = canvas.getContext("2d");
-      perlin = new SimplexNoise();
-      canvas.width = width;
-      canvas.height = height;
 
-      draw();
+      reset();
+      window.addEventListener("resize", reset);
+      canvas.addEventListener("mousemove", mousemove);
+      console.log(`Referrer: ${document.referrer}`);
     }
 
-    function draw() {
-      requestAnimFrame(draw);
+    function reset() {
+      simplex = new SimplexNoise();
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+      m = Math.min(w, h);
+      mx = w / 2;
+      my = h / 2;
+    }
 
-      ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
-      ctx.fillRect(0, 0, width, height);
+    function mousemove(event) {
+      mx = event.clientX + 1;
+      my = event.clientY + 1;
+    }
 
-      ctx.fillStyle = "rgba(100, 10, 90, 0.9)";
-
-      xstart = 0.02;
-      ystart -= 0.01;
-
-      ctx.save();
-      ctx.translate(width / 2, height / 2);
-      let ynoise = ystart;
-      for (var x = -(width / 2) / offsetX; x < width / 2 / offsetX; x++) {
-        ynoise += 0.05;
-        let xnoise = xstart;
-        for (var y = -10; y < 10; y++) {
-          xnoise += 0.5;
-          var size = perlin.noise2D(xnoise, ynoise);
-          var pointX = perlin.noise2D(x * freq, y * freq) + x;
-          var pointY = perlin.noise2D(x * freq, y * freq) + y;
-
-          ctx.fillRect(pointX * offsetX, pointY * 50, size * 40, size * 1);
-        }
+    function draw(timestamp) {
+      now = timestamp;
+      requestAnimationFrame(draw);
+      ctx.fillStyle = "#f3f7f9";
+      ctx.fillRect(0, 0, w, h);
+      ctx.strokeStyle = "black";
+      for (let i = 1; i < m / 2 - 40; i += 80) {
+        drawCircle(i);
       }
-      ctx.restore();
     }
+
+    function drawCircle(r) {
+      ctx.beginPath();
+      let point, x, y;
+      let deltaAngle = (Math.PI * 2) / 400;
+      for (let angle = 0; angle < Math.PI * 2; angle += deltaAngle) {
+        point = calcPoint(angle, r);
+        x = point[0];
+        y = point[1];
+        ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.stroke();
+    }
+
+    function calcPoint(angle, r) {
+      let noiseFactor = (mx / w) * 50;
+      let zoom = (my / h) * 200;
+      let x = Math.cos(angle) * r + w / 2;
+      let y = Math.sin(angle) * r + h / 2;
+      let n = simplex.noise3D(x / zoom, y / zoom, now / 2000) * noiseFactor;
+      x = Math.cos(angle) * (r + n) + w / 2;
+      y = Math.sin(angle) * (r + n) + h / 2;
+      return [x, y];
+    }
+
     setup();
+    draw();
   },
 };
 </script>
 
-<style lang="stylus"></style>
+<style lang="stylus">
+#canvas {
+  max-height : 550px;
+}
+</style>
