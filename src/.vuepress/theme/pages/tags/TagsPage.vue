@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="flex justify-center mx-auto pt-24">
+    <div class="flex justify-center mx-auto pt-8">
       <nav>
         <a
           v-for="tag in Object.keys(tags)"
@@ -48,7 +48,10 @@ export default {
     },
     postsTags() {
       return this.$site.pages
-        .filter((x) => x.path.startsWith("/blog/") && !x.frontmatter.blog_index)
+        .filter(
+          ({ path, frontmatter }) =>
+            path.startsWith("/blog/") && !frontmatter.blog_index
+        )
         .map((post) => ({
           post,
           tags: post.frontmatter.tags

@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col font-sans" :class="theme">
+  <div class="flex flex-col font-sans h-screen" :class="theme">
     <div
-      class="theme-container pt-20 h-screen bg-main-background text-primary"
+      class="theme-container pt-20 bg-main-background text-primary"
       :class="pageClasses"
       @touchstart="onTouchStart"
       @touchend="onTouchEnd"
@@ -137,7 +137,9 @@ export default {
 };
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
+html
+ background-color: var(--bg-color) !important
 .main
   padding-top $navbarHeight 0
   margin 0px auto
