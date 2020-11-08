@@ -5,7 +5,7 @@
         <a
           v-for="tag in Object.keys(tags)"
           :key="tag"
-          class="tag text-primary py-3 px-4 font-medium mr-3 hover:bg-gray-200"
+          class="tag py-3 px-4 font-medium mr-3 hover:bg-gray-100"
           :class="selectedTag === tag ? 'tag-selected ' : ''"
           @click="onTagSelect(tag)"
         >
@@ -69,9 +69,10 @@ export default {
 .tag {
   border-style: solid;
   border-width: 3px;
-  border-color: #935347 #ede9ce #64706c #c7ad88;
+  border-color: var(--border-colors);
 }
 .tag-selected {
   box-shadow: 5px 5px var(--font-color);
+  color: black !important;
 }
 </style>
