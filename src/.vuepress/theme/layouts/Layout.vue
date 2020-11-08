@@ -137,7 +137,7 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 .main
   padding-top $navbarHeight 0
   margin 0px auto

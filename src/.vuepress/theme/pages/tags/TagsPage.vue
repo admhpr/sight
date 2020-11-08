@@ -5,7 +5,7 @@
         <a
           v-for="tag in Object.keys(tags)"
           :key="tag"
-          class="tag py-3 px-4 font-medium mr-3 hover:bg-gray-100"
+          class="tag py-3 px-4 text-gray-700 font-medium mr-3 hover:bg-gray-100"
           :class="selectedTag === tag ? 'tag-selected ' : ''"
           @click="onTagSelect(tag)"
         >
@@ -73,6 +73,5 @@ export default {
 }
 .tag-selected {
   box-shadow: 5px 5px var(--font-color);
-  color: black !important;
 }
 </style>

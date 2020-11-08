@@ -29,7 +29,7 @@
     <div class="flex justify-end post-footer">
       <router-link
         :to="post.path"
-        class="border bg-white text-primary rounded p-1 font-bold"
+        class="border text-gray-800 bg-white rounded p-1 font-bold"
         >Read More</router-link
       >
     </div>
