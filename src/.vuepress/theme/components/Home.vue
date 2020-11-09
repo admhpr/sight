@@ -11,7 +11,9 @@
         v-if="data.heroText"
         class="mb-5 text-2xl flex text-center justify-center"
       >
-        {{ data.heroText || $title }}
+        <router-link to="/blog" class="text-gray-700 heroText">
+          {{ data.heroText || $title }}</router-link
+        >
       </h1>
 
       <p>
@@ -44,7 +46,7 @@
 
     <footer>
       <div class="bg-main-background text-primary p-10 flex justify-center">
-        MIT Licensed | Copyright © 2019-present Adam Harpur
+        Copyright © {{ new Date().getFullYear() }} Adam Harpur
       </div>
     </footer>
   </section>
