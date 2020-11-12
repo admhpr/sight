@@ -9,7 +9,7 @@
 
       <h1
         v-if="data.heroText"
-        class="mb-5 text-2xl flex text-center justify-center"
+        class="mb-5 text-1xl flex text-center justify-center"
       >
         <router-link to="/blog" class="text-gray-700 heroText">
           {{ data.heroText || $title }}</router-link
