@@ -17,7 +17,9 @@
             v-for="tag in post.frontmatter.tags"
             :key="tag"
             class="rounded-full py-1 text-sm font-semibold text-primary mr-1"
-            >#{{ lowerCase(tag) }}</span
+            ><router-link :to="'/tags/' + lowerCase(tag)"
+              >#{{ lowerCase(tag) }}
+            </router-link></span
           >
         </span>
       </div>

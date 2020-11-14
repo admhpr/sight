@@ -39,6 +39,7 @@
 
       <!-- Theme Switcher -->
       <button
+        v-if="theme"
         role="button"
         aria-label="Toggle dark/light"
         class="can-hide ml-4 text-primary bg-transparent border-0 focus:outline-none hover:text-accent"
@@ -89,17 +90,17 @@
 </template>
 
 <script>
-import AlgoliaSearchBox from "@AlgoliaSearchBox";
-import SearchBox from "@theme/components/SearchBox.vue";
-import SidebarButton from "@theme/components/SidebarButton.vue";
-import NavLinks from "@theme/components/NavLinks.vue";
+import AlgoliaSearchBox from '@AlgoliaSearchBox';
+import SearchBox from '@theme/components/SearchBox.vue';
+import SidebarButton from '@theme/components/SidebarButton.vue';
+import NavLinks from '@theme/components/NavLinks.vue';
 
 export default {
   components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox },
   props: {
     theme: {
       type: String,
-      required: true,
+      default: '',
     },
   },
 
@@ -124,8 +125,8 @@ export default {
   mounted() {
     const MOBILE_DESKTOP_BREAKPOINT = 719; // refer to config.styl
     const NAVBAR_VERTICAL_PADDING =
-      parseInt(css(this.$el, "paddingLeft")) +
-      parseInt(css(this.$el, "paddingRight"));
+      parseInt(css(this.$el, 'paddingLeft')) +
+      parseInt(css(this.$el, 'paddingRight'));
     const handleLinksWrapWidth = () => {
       if (document.documentElement.clientWidth < MOBILE_DESKTOP_BREAKPOINT) {
         this.linksWrapMaxWidth = null;
@@ -137,14 +138,14 @@ export default {
       }
     };
     handleLinksWrapWidth();
-    window.addEventListener("resize", handleLinksWrapWidth, false);
+    window.addEventListener('resize', handleLinksWrapWidth, false);
   },
   methods: {
     toggleTheme() {
       const newTheme =
-        this.theme === "theme-light" ? "theme-dark" : "theme-light";
-      localStorage.setItem("theme", newTheme);
-      this.$emit("themeChanged", newTheme);
+        this.theme === 'theme-light' ? 'theme-dark' : 'theme-light';
+      localStorage.setItem('theme', newTheme);
+      this.$emit('themeChanged', newTheme);
     },
   },
 };

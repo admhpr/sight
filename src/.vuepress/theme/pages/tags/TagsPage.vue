@@ -1,11 +1,13 @@
 <template>
   <section>
+    <Navbar v-if="$route.params.tag" />
+    <router-link v-if="$route.params.tag" to="/tags"></router-link>
     <div v-if="!$route.params.tag" class="flex justify-center mx-auto pt-8">
       <nav>
         <a
           v-for="tag in Object.keys(tags)"
           :key="tag"
-          class="tag py-3 px-4 text-gray-700 font-medium mr-3 hover:bg-gray-100"
+          class="tag py-3 px-4 text-gray-700 font-medium mr-3"
           :class="selectedTag === tag ? 'tag-selected ' : ''"
           @click="onTagSelect(tag)"
         >
@@ -20,10 +22,12 @@
 </template>
 
 <script>
+import Navbar from '@theme/components/Navbar.vue';
 import BlogPage from '@theme/pages/blog/BlogPage.vue';
 export default {
   components: {
     BlogPage,
+    Navbar,
   },
   data() {
     return {
@@ -60,6 +64,13 @@ export default {
         }));
     },
   },
+  watch: {
+    $route({ params: { tag } }) {
+      if (tag) {
+        this.selectedTag = tag;
+      }
+    },
+  },
   mounted() {
     if (this.$route.params.tag) {
       this.selectedTag = this.$route.params.tag;
@@ -73,7 +84,28 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="stylus">
+section {
+  color: #444;
+}
+// overrides
+.theme-dark {
+  a:hover,
+  .nav-links a.router-link-active {
+    color: #dddddd;
+  }
+  .tag {
+    color: #dddddd;
+  }
+  .tag:hover {
+    background-color: #051b2c;
+  }
+}
+
+a:hover,
+.nav-links a.router-link-active {
+  color: #c7ad88;
+}
 .tag {
   border-style: solid;
   border-width: 3px;
