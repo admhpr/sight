@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import moment from "moment";
+import moment from 'moment';
 export default {
   props: {
     post: {
@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     formateDate(date) {
-      return moment(date).format("MMM Do YYYY");
+      return moment(date).format('MMM Do YYYY');
     },
     lowerCase(str) {
       return `${str}`.toLowerCase();

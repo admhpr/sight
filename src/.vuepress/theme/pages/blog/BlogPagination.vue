@@ -68,7 +68,7 @@ export default {
     pageNumberSelected(index) {
       if (index >= 0 && index < this.postsPerPage) {
         this.selectedPageIndex = index;
-        this.$emit("page-selected", index);
+        this.$emit('page-selected', index);
       }
     },
   },

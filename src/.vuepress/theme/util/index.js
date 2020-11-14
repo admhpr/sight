@@ -4,7 +4,7 @@ export const endingSlashRE = /\/$/;
 export const outboundRE = /^(https?:|mailto:|tel:)/;
 
 export function normalize(path) {
-  return decodeURI(path).replace(hashRE, "").replace(extRE, "");
+  return decodeURI(path).replace(hashRE, '').replace(extRE, '');
 }
 
 export function getHash(path) {
@@ -31,13 +31,13 @@ export function ensureExt(path) {
     return path;
   }
   const hashMatch = path.match(hashRE);
-  const hash = hashMatch ? hashMatch[0] : "";
+  const hash = hashMatch ? hashMatch[0] : '';
   const normalized = normalize(path);
 
   if (endingSlashRE.test(normalized)) {
     return path;
   }
-  return normalized + ".html" + hash;
+  return normalized + '.html' + hash;
 }
 
 export function isActive(route, path) {
@@ -54,7 +54,7 @@ export function isActive(route, path) {
 export function resolvePage(pages, rawPath, base) {
   if (isExternal(rawPath)) {
     return {
-      type: "external",
+      type: 'external',
       path: rawPath,
     };
   }
@@ -65,7 +65,7 @@ export function resolvePage(pages, rawPath, base) {
   for (let i = 0; i < pages.length; i++) {
     if (normalize(pages[i].regularPath) === path) {
       return Object.assign({}, pages[i], {
-        type: "page",
+        type: 'page',
         path: ensureExt(pages[i].path),
       });
     }
@@ -78,15 +78,15 @@ export function resolvePage(pages, rawPath, base) {
 
 function resolvePath(relative, base, append) {
   const firstChar = relative.charAt(0);
-  if (firstChar === "/") {
+  if (firstChar === '/') {
     return relative;
   }
 
-  if (firstChar === "?" || firstChar === "#") {
+  if (firstChar === '?' || firstChar === '#') {
     return base + relative;
   }
 
-  const stack = base.split("/");
+  const stack = base.split('/');
 
   // remove trailing segment if:
   // - not appending
@@ -96,22 +96,22 @@ function resolvePath(relative, base, append) {
   }
 
   // resolve relative path
-  const segments = relative.replace(/^\//, "").split("/");
+  const segments = relative.replace(/^\//, '').split('/');
   for (let i = 0; i < segments.length; i++) {
     const segment = segments[i];
-    if (segment === "..") {
+    if (segment === '..') {
       stack.pop();
-    } else if (segment !== ".") {
+    } else if (segment !== '.') {
       stack.push(segment);
     }
   }
 
   // ensure leading slash
-  if (stack[0] !== "") {
-    stack.unshift("");
+  if (stack[0] !== '') {
+    stack.unshift('');
   }
 
-  return stack.join("/");
+  return stack.join('/');
 }
 
 /**
@@ -131,7 +131,7 @@ export function resolveSidebarItems(page, regularPath, site, localePath) {
 
   const pageSidebarConfig =
     page.frontmatter.sidebar || localeConfig.sidebar || themeConfig.sidebar;
-  if (pageSidebarConfig === "auto") {
+  if (pageSidebarConfig === 'auto') {
     return resolveHeaders(page);
   }
 
@@ -152,15 +152,15 @@ function resolveHeaders(page) {
   const headers = groupHeaders(page.headers || []);
   return [
     {
-      type: "group",
+      type: 'group',
       collapsable: false,
       title: page.title,
       path: null,
       children: headers.map((h) => ({
-        type: "auto",
+        type: 'auto',
         title: h.title,
         basePath: page.path,
-        path: page.path + "#" + h.slug,
+        path: page.path + '#' + h.slug,
         children: h.children || [],
       })),
     },
@@ -183,7 +183,7 @@ export function groupHeaders(headers) {
 
 export function resolveNavLinkItem(linkItem) {
   return Object.assign(linkItem, {
-    type: linkItem.items && linkItem.items.length ? "links" : "link",
+    type: linkItem.items && linkItem.items.length ? 'links' : 'link',
   });
 }
 
@@ -195,7 +195,7 @@ export function resolveNavLinkItem(linkItem) {
 export function resolveMatchingConfig(regularPath, config) {
   if (Array.isArray(config)) {
     return {
-      base: "/",
+      base: '/',
       config: config,
     };
   }
@@ -211,11 +211,11 @@ export function resolveMatchingConfig(regularPath, config) {
 }
 
 function ensureEndingSlash(path) {
-  return /(\.html|\/)$/.test(path) ? path : path + "/";
+  return /(\.html|\/)$/.test(path) ? path : path + '/';
 }
 
 function resolveItem(item, pages, base, groupDepth = 1) {
-  if (typeof item === "string") {
+  if (typeof item === 'string') {
     return resolvePage(pages, item, base);
   } else if (Array.isArray(item)) {
     return Object.assign(resolvePage(pages, item[0], base), {
@@ -223,7 +223,7 @@ function resolveItem(item, pages, base, groupDepth = 1) {
     });
   } else {
     if (groupDepth > 3) {
-      console.error("[vuepress] detected a too deep nested sidebar group.");
+      console.error('[vuepress] detected a too deep nested sidebar group.');
     }
     const children = item.children || [];
     if (children.length === 0 && item.path) {
@@ -232,7 +232,7 @@ function resolveItem(item, pages, base, groupDepth = 1) {
       });
     }
     return {
-      type: "group",
+      type: 'group',
       path: item.path,
       title: item.title,
       sidebarDepth: item.sidebarDepth,

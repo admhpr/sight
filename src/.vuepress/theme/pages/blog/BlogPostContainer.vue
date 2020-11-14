@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import BlogPost from "@theme/pages/blog/BlogPost.vue";
-import BlogPagination from "@theme/pages/blog/BlogPagination.vue";
+import BlogPost from '@theme/pages/blog/BlogPost.vue';
+import BlogPagination from '@theme/pages/blog/BlogPagination.vue';
 export default {
   components: { BlogPost, BlogPagination },
   props: {
