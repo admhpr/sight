@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="flex justify-center mx-auto pt-8">
+    <div v-if="!$route.params.tag" class="flex justify-center mx-auto pt-8">
       <nav>
         <a
           v-for="tag in Object.keys(tags)"
@@ -20,14 +20,14 @@
 </template>
 
 <script>
-import BlogPage from "@theme/pages/blog/BlogPage.vue";
+import BlogPage from '@theme/pages/blog/BlogPage.vue';
 export default {
   components: {
     BlogPage,
   },
   data() {
     return {
-      selectedTag: "",
+      selectedTag: '',
     };
   },
   computed: {
@@ -50,7 +50,7 @@ export default {
       return this.$site.pages
         .filter(
           ({ path, frontmatter }) =>
-            path.startsWith("/blog/") && !frontmatter.blog_index
+            path.startsWith('/blog/') && !frontmatter.blog_index
         )
         .map((post) => ({
           post,
@@ -59,6 +59,11 @@ export default {
             : [],
         }));
     },
+  },
+  mounted() {
+    if (this.$route.params.tag) {
+      this.selectedTag = this.$route.params.tag;
+    }
   },
   methods: {
     onTagSelect(tag) {
