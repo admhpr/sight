@@ -39,7 +39,7 @@
 
       <!-- Theme Switcher -->
       <button
-        v-if="theme"
+        v-if="theme && isBlogPost"
         role="button"
         aria-label="Toggle dark/light"
         class="can-hide ml-4 text-primary bg-transparent border-0 focus:outline-none hover:text-accent"
@@ -119,6 +119,9 @@ export default {
 
     isAlgoliaSearch() {
       return this.algolia && this.algolia.apiKey && this.algolia.indexName;
+    },
+    isBlogPost() {
+      return RegExp('blog\/+.+').test(this.$page.path);
     },
   },
 
