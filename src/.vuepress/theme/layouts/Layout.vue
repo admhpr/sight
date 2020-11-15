@@ -34,13 +34,13 @@
 </template>
 
 <script>
-import Home from "@theme/components/Home.vue";
-import BlogPage from "@theme/pages/blog/BlogPage.vue";
-import TagsPage from "@theme/pages/tags/TagsPage.vue";
-import Navbar from "@theme/components/Navbar.vue";
-import Page from "@theme/components/Page.vue";
-import Sidebar from "@theme/components/Sidebar.vue";
-import { resolveSidebarItems } from "../util";
+import Home from '@theme/components/Home.vue';
+import BlogPage from '@theme/pages/blog/BlogPage.vue';
+import TagsPage from '@theme/pages/tags/TagsPage.vue';
+import Navbar from '@theme/components/Navbar.vue';
+import Page from '@theme/components/Page.vue';
+import Sidebar from '@theme/components/Sidebar.vue';
+import { resolveSidebarItems } from '../util';
 
 export default {
   components: { Home, BlogPage, Page, Sidebar, TagsPage, Navbar },
@@ -48,8 +48,8 @@ export default {
   data() {
     return {
       isSidebarOpen: false,
-      theme: "",
-      footer: "footer text",
+      theme: '',
+      footer: 'footer text',
     };
   },
 
@@ -91,9 +91,9 @@ export default {
       const userPageClass = this.$page.frontmatter.pageClass;
       return [
         {
-          "no-navbar": !this.shouldShowNavbar,
-          "sidebar-open": this.isSidebarOpen,
-          "no-sidebar": !this.shouldShowSidebar,
+          'no-navbar': !this.shouldShowNavbar,
+          'sidebar-open': this.isSidebarOpen,
+          'no-sidebar': !this.shouldShowSidebar,
         },
         userPageClass,
       ];
@@ -101,7 +101,7 @@ export default {
   },
 
   mounted() {
-    this.theme = localStorage.getItem("theme") || "theme-light";
+    this.theme = localStorage.getItem('theme') || 'theme-light';
     this.$router.afterEach(() => {
       this.isSidebarOpen = false;
     });
@@ -109,7 +109,7 @@ export default {
 
   methods: {
     toggleSidebar(to) {
-      this.isSidebarOpen = typeof to === "boolean" ? to : !this.isSidebarOpen;
+      this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen;
     },
     updateTheme(theme) {
       this.theme = theme;
@@ -137,40 +137,7 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 html
  background-color: var(--bg-color) !important
-.main
-  padding-top $navbarHeight 0
-  margin 0px auto
-
-
-@media (max-width: $MQMobile)
-  .home
-    .features
-      flex-direction column
-    .feature
-      max-width 100%
-      padding 0 2.5rem
-
-@media (max-width: $MQMobileNarrow)
-  .home
-    padding-left 1.5rem
-    padding-right 1.5rem
-    .hero
-      img
-        max-height 210px
-        margin 2rem auto 1.2rem
-      h1
-        font-size 2rem
-      h1, .description, .action
-        margin 1.2rem auto
-      .description
-        font-size 1.2rem
-      .action-button
-        font-size 1rem
-        padding 0.6rem 1.2rem
-    .feature
-      h2
-        font-size 1.25rem
 </style>

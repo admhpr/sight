@@ -1,31 +1,38 @@
 module.exports = {
-  title: "{AH}",
+  title: '{AH}',
   themeConfig: {
     // Assumes GitHub. Can also be a full GitLab url.
-    repo: "https://github.com/DavidCouronne/vuepress-tailwind",
-    repoLabel: "Contribute!",
+    repo: 'https://github.com/DavidCouronne/vuepress-tailwind',
+    repoLabel: 'Contribute!',
     // if your docs are not at the root of the repo:
-    docsDir: "src",
+    docsDir: 'src',
     // if your docs are in a specific branch (defaults to 'master'):
-    docsBranch: "master",
+    docsBranch: 'master',
     // defaults to false, set to true to enable
     editLinks: true,
     // custom text for edit link. Defaults to "Edit this page"
-    editLinkText: "Help us improve this page!",
+    editLinkText: 'Help us improve this page!',
     nav: [
-      { text: "Blog", link: "/blog/" },
-      { text: "Tags", link: "/tags/" },
-      { text: "Guide", link: "/guide/" },
+      { text: 'Blog', link: '/blog/' },
+      { text: 'Tags', link: '/tags/' },
+      { text: 'Guide', link: '/guide/' },
     ],
     sidebar: {
-      "/guide/": ["", "custom"],
+      '/guide/': ['', 'custom'],
     },
   },
-  plugins: ["vuepress-plugin-reading-time"],
+  plugins: ['vuepress-plugin-reading-time'],
   postcss: {
     plugins: [
-      require("tailwindcss")("./tailwind.config.js"),
-      require("autoprefixer"),
+      require('tailwindcss')('./tailwind.config.js'),
+      require('autoprefixer'),
     ],
   },
-}
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@img': 'img',
+      },
+    },
+  },
+};
