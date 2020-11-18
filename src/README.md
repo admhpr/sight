@@ -1,6 +1,6 @@
 ---
 home: true
-heroText: "{ DOCUMENT THE JOURNEY }"
+heroText: "{ DOCUMENTING THE JOURNEY && THINKING OUT LOUD}"
 ---
 
 
